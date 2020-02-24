@@ -1,21 +1,23 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>njpj</groupId>
-  <artifactId>testFace_SSM_Maven</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  
-  <!--引入项目依赖的jar包 -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>njpj</groupId>
+	<artifactId>ssm2017</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<!--引入项目依赖的jar包 -->
 	<!-- SpringMVC、Spring -->
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 	<dependencies>
 
-		<!--引入pageHelper分页插件 --> 
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.github.pagehelper</groupId> -->
-<!-- 			<artifactId>pagehelper</artifactId> -->
-<!-- 			<version>5.0.0</version> -->
-<!-- 		</dependency> -->
+		<!--引入pageHelper分页插件 -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.github.pagehelper</groupId> -->
+		<!-- <artifactId>pagehelper</artifactId> -->
+		<!-- <version>5.0.0</version> -->
+		<!-- </dependency> -->
 
 		<!-- MBG -->
 		<!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core -->
@@ -40,9 +42,7 @@
 			<version>2.8.8</version>
 		</dependency>
 
-		<!--JSR303数据校验支持；tomcat7及以上的服务器， 
-		tomcat7以下的服务器：el表达式。额外给服务器的lib包中替换新的标准的el
-		-->
+		<!--JSR303数据校验支持；tomcat7及以上的服务器， tomcat7以下的服务器：el表达式。额外给服务器的lib包中替换新的标准的el -->
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -128,6 +128,35 @@
 			<version>4.12</version>
 		</dependency>
 	</dependencies>
-  
-  
+
+	<build>
+		<finalName>ssm2017</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+              <!-- 			配置tomact插件，不用取使用本地项目 -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<url>http://127.0.0.1:8080/ssm2017/show</url>
+					<port>8080</port>
+					<server>tomact7</server>
+					<username>tomcat</username>
+		            <password>tomcat</password>
+					<path>/ssm2017</path>
+		       </configuration>
+		   </plugin>
+		</plugins>
+		
+
+	</build>
 </project>
